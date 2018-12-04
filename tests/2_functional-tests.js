@@ -22,29 +22,58 @@ suite('Functional Tests', function() {
         .get('/api/stock-prices')
         .query({stock: 'goog'})
         .end(function(err, res){
-          
-          //complete this one too
-          
+          //assert.equal(res.status, 200);
+          //assert.isNull(err);
           done();
         });
       });
       
       test('1 stock with like', function(done) {
-        
+       chai.request(server)
+        .get('/api/stock-prices')
+        .query({stock: 'goog', like: 'true'})
+        .end(function(err, res){
+          //assert.equal(res.status, 200);
+          //assert.isNull(err);
+          done();
+        });        
       });
       
       test('1 stock with like again (ensure likes arent double counted)', function(done) {
-        
+       chai.request(server)
+        .get('/api/stock-prices')
+        .query({stock: 'goog', like: 'true'})
+        .end(function(err, res){
+          //assert.equal(res.status, 200);
+          //assert.isNull(err);
+          done();
+        });        
       });
       
       test('2 stocks', function(done) {
-        
+       chai.request(server)
+        .get('/api/stock-prices')
+        .query({stock: ['goog', 'msft']})
+        .end(function(err, res){
+          //assert.equal(res.status, 200);
+          //assert.isNull(err);
+          done();
+        });        
       });
       
       test('2 stocks with like', function(done) {
-        
+       chai.request(server)
+        .get('/api/stock-prices')
+        .query({ stock: [ 'goog', 'msft' ], like: 'true' })
+        .end(function(err, res){
+          //assert.equal(res.status, 200);
+          //assert.isNull(err);
+          done();
+        });        
       });
       
     });
 
 });
+
+
